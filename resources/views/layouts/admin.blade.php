@@ -52,15 +52,15 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{route('users.index')}}">
                   <span data-feather="users"></span>
-                  Customers
+                  All Users
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{route('users.create')}}">
                   <span data-feather="bar-chart-2"></span>
-                  Reports
+                  Create User
                 </a>
               </li>
               <li class="nav-item">
