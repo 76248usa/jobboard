@@ -21,6 +21,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/admin/users', 'AdminUsersController');
 
+Route::get('admin/users/{user}/edit', [ 'as' => 'users.edit', 'uses' => 'AdminUsersController@edit']);
+
+Route::delete('/admin/users/{user}', ['as' => 'users.destroy', 'uses' =>'AdminUsersController@destroy']);
+
+Route::get('admin/users/{user}',['as' => 'users.show', 'uses' =>'AdminUsersController@show']); 
+
+//Route::get('/admin/users/{user}/edit', 'AdminUsersController@edit');
+
 Route::get('/admin', function(){
   return view('admin.index');
 });
