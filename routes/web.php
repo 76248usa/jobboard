@@ -19,16 +19,22 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/admin/users', 'AdminUsersController');
+Route::get('admin/users/create', [ 'as' => 'users.create', 'uses' => 'AdminUsersController@create']);
 
 Route::get('admin/users/{user}/edit', [ 'as' => 'users.edit', 'uses' => 'AdminUsersController@edit']);
 
 Route::delete('/admin/users/{user}', ['as' => 'users.destroy', 'uses' =>'AdminUsersController@destroy']);
 
-Route::get('admin/users/{user}',['as' => 'users.show', 'uses' =>'AdminUsersController@show']); 
+Route::get('admin/users/{user}',['as' => 'users.show', 'uses' =>'AdminUsersController@show']);
 
 //Route::get('/admin/users/{user}/edit', 'AdminUsersController@edit');
+Route::group(['middleware'=>'admin'], function(){
 
+  Route::resource('/admin/users', 'AdminUsersController');
+
+  Route::resource('/admin/posts', 'AdminPostsController');
+
+});
 Route::get('/admin', function(){
   return view('admin.index');
 });

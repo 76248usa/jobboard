@@ -42,21 +42,39 @@
   {!! Form::password('password',['class'=>'form-control']) !!}
 </div>
 
+</div>
+
+<div class="row">
+
 <div class="form-group">
-  {!! Form::submit('Update User',['class'=>'btn btn-primary col-sm-6']) !!}
+  {!! Form::submit('Update User',['class'=>'btn btn-primary']) !!}
 </div>
 
 {!! Form::close() !!}
+
+
 
 {!! Form::open(['method'=>'DELETE', 'action'=>['AdminUsersController@destroy', $user->id]]) !!}
 
 <div class="form-group">
-  {!! Form::submit('Delete User',['class'=>'btn btn-danger col-sm-6']) !!}
+  {!! Form::submit('Delete User',['class'=>'btn btn-danger']) !!}
 </div>
 
 {!! Form::close() !!}
 
+<?php echo $_SERVER['DOCUMENT_ROOT']; ?>
+
 </div>
+
+<script>
+
+function myFunction(){
+  alert("This action will update/delete the user");
+}
+
+</script>
+
+
 
 @include('includes.error')
 

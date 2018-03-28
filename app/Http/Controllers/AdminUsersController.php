@@ -8,6 +8,9 @@ use App\Role;
 use App\Photo;
 use App\Http\Requests\UsersRequest;
 use App\Http\Requests\UsersEditRequest;
+use Session;
+use File;
+use Storage;
 
 class AdminUsersController extends Controller
 {
@@ -119,7 +122,7 @@ class AdminUsersController extends Controller
       }else{
 
         $input = $request->all();
-        
+
         $input['password'] = bcrypt($request->password);
 
       }
@@ -146,6 +149,8 @@ class AdminUsersController extends Controller
 
       $user->update($input);
 
+      Session::flash('updated_user', 'The user has been updated');
+
       return redirect('/admin/users');
 
       }
@@ -160,7 +165,11 @@ class AdminUsersController extends Controller
     {
         $user = User::findOrFail($id);
 
+        unlink(public_path() .  '/images/' . $user->photo->file );
+
         $user->delete();
+
+        Session::flash('deleted_user', 'The user has been deleted');
 
         return redirect('/admin/users');
     }

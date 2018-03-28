@@ -2,6 +2,19 @@
 
 
 @section('content')
+
+@if(Session::has('deleted_user'))
+  <div class="alert alert-danger">
+    <h4>{{session('deleted_user')}}</h4>
+  </div>
+@endif
+
+@if(Session::has('updated_user'))
+  <div class="alert alert-danger">
+    <h4>{{session('updated_user')}}</h4>
+  </div>
+@endif
+
 <style type="text/css">
 img {
   border-radius: 25px;
