@@ -44,8 +44,8 @@ img {
     <th scope="row">{{$user->id}}</th>
 
      <td>@if($user->photo)
-     <!-- <img height="50" border-radius="50px" src="http://localhost:8888/jobboard/public/images/{{($user->photo->file)}}" alt=""> -->
-     <img height="50" border-radius="50px" src="{{($user->photo->file)}}" alt="">
+     <img height="50" border-radius="50px" src="http://localhost:8888/jobboard/public/images/{{($user->photo->file)}}" alt="">
+     <!-- <img height="50" border-radius="50px" src="{{($user->photo->file)}}" alt=""> -->
      @else
      <img height="50" src="http://localhost:8888/jobboard/public/images/avatar.png" alt="">
      @endif</td>

@@ -17,20 +17,19 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-      if(Auth::check()){
+        if(Auth::check()){
 
-        if(Auth::user()->isAdmin()){
+          if(Auth::user()->role->name == 'administrator' && Auth::user()->is_active == 1) {
 
-          return next($request);
+            return $next($request);
+
+          }
+
+          return redirect('/');
 
         }
-
-        return redirect('/');
-
+          return $next($request);
       }
-        return $next($request);
-    }
 
-    
 
 }

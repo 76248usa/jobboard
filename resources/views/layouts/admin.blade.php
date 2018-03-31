@@ -40,15 +40,21 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{route('posts.index')}}">
                   <span data-feather="file"></span>
-                  Orders
+                  All Posts
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{route('posts.create')}}">
                   <span data-feather="shopping-cart"></span>
-                  Products
+                  Create Post
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{route('posts.edit')}}">
+                  <span data-feather="shopping-cart"></span>
+                  Edit Post
                 </a>
               </li>
               <li class="nav-item">
@@ -109,7 +115,7 @@
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
 
-    <h1>Welcome to Admin</h1>
+    <!-- <h1>Welcome to Admin</h1> -->
           </div>
   @yield('content')
 

@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Role;
 use App\Photo;
+use App\Post;
 
 class User extends Authenticatable
 {
@@ -39,15 +40,22 @@ class User extends Authenticatable
 
     public function setPasswordAttribute($password) {
       if(!empty($password)){
-        $this->attributes['password'] = bcrypt($password);
+        return $this->attributes['password'] = bcrypt($password);
       }
     }
 
-    public function isAdmin(){
-      if($this->role->name == 'administrator' && $this->is_active == 1){
-        return true;
+      public function posts(){
+        return $this->hasMany('App\Post');
       }
-        return false;
-      
-    }
+
+
+    // public function isAdmin(){
+    //   if($this->role->name == 'administrator'){
+    //     return true;
+    //
+    //   }
+    //     return false;
+    //
+    // }
+
 }

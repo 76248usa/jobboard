@@ -34,7 +34,14 @@ Route::group(['middleware'=>'admin'], function(){
 
   Route::resource('/admin/posts', 'AdminPostsController');
 
+  //Route::resource('admin/posts/{post}/edit','AdminPostsController@edit');
+  Route::get('/edit/', [ 'as' => 'posts.edit', 'uses' => 'AdminPostsController@edit']);
+  //
+  // Route::get('/admin/posts/create', 'AdminPostsController@create');
+
 });
+
+
 Route::get('/admin', function(){
   return view('admin.index');
 });

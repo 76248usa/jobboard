@@ -2,10 +2,25 @@
 
 @section('content')
 
+<style>
+img {
+  border-radius: 50px;
+}
+
+</style>
+
 <h2>Edit User</h2>
 
 <div class="col-sm-3">
-  <img src="{{$user->photo ? $user->photo->file: 'http://placehold.it/'}}" alt="" height="150" class="img-responsive">
+
+  @if($user->photo)
+  <!-- <img src="{{$user->photo->file}}" alt="" height="150" class="img-responsive"> -->
+  <img height="150" border-radius="50px" src="http://localhost:8888/jobboard/public/images/{{($user->photo->file)}}">
+  @else
+  <img src="{{'http://placehold.it/'}}" alt="" height="150" class="img-responsive">
+  @endif
+
+  <!-- <img src="{{$user->photo ? $user->photo->file : 'http://placehold.it/'}}" alt="" height="150" class="img-responsive"> -->
 </div>
 
 <div class="col-sm-9">
@@ -61,8 +76,6 @@
 </div>
 
 {!! Form::close() !!}
-
-<?php echo $_SERVER['DOCUMENT_ROOT']; ?>
 
 </div>
 

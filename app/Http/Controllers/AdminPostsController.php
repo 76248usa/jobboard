@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PostsCreateRequest;
+use Illuminate\Support\Facades\Auth;
+use App\Post; 
+
 
 class AdminPostsController extends Controller
 {
@@ -13,7 +17,9 @@ class AdminPostsController extends Controller
      */
     public function index()
     {
-        //
+      $posts = Post::all();
+
+      return view('admin.posts.index', compact('posts'));
     }
 
     /**
@@ -23,7 +29,7 @@ class AdminPostsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.posts.create');
     }
 
     /**
@@ -32,9 +38,16 @@ class AdminPostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostsCreateRequest $request)
     {
-        //
+        $user = Auth::user();
+
+        $input = $request->all();
+
+        $user->posts()->create($input);
+
+        return redirect('/admin/posts');
+       
     }
 
     /**
@@ -56,7 +69,7 @@ class AdminPostsController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**

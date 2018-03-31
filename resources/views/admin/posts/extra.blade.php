@@ -1,11 +1,5 @@
-@extends('layouts.admin')
-
-@section('content')
-<h1>Create Posts</h1>
-
-<div class="row">
-
 {!! Form::open(['method'=>'POST', 'action'=>'AdminPostsController@store', 'files' => 'true'])!!}
+
 <div class="form-group">
   {!! Form::label('title', 'Title:') !!}
   {!! Form::text('title',null,['class'=>'form-control']) !!}
@@ -17,8 +11,23 @@
 </div>
 
 <div class="form-group">
+  {!! Form::label('date_posted', 'Date Posted:') !!}
+  {!!  Form::date('date_posted',null, \Carbon\Carbon::now()) !!} 
+</div>
+
+<div class="form-group">
   {!! Form::label('date_start', 'Starting date:') !!}
-  {!!  Form::date('date_start',null, ['class' => 'form-control'])  !!}
+  {!!  Form::date('date_start', ['class' => 'form-control'])  !!}
+</div>
+
+<div class="form-group">
+  {!! Form::label('body', 'Content:') !!}
+  {!! Form::textarea('body',null,['class'=>'form-control', 'rows'=>'5']) !!}
+</div>
+
+<div class="form-group">
+  {!! Form::label('category_id', 'Category:') !!}
+  {!! Form::select('category_id',null, [''=>'Choose Options'] ,['class'=>'form-control']) !!}
 </div>
 
 <div class="form-group">
@@ -27,27 +36,7 @@
 </div>
 
 <div class="form-group">
-  {!! Form::label('body', 'Description:') !!}
-  {!! Form::textarea('body',null,['class'=>'form-control', 'rows'=>'5']) !!}
-</div>
-
-<div class="form-group">
-  {!! Form::label('category_id', 'Category:') !!}
-  {!! Form::select('category_id',array(''=>'Choose Option', '1' => 'Elementary', '2' => 'middle'),null ,['class'=>'form-control']) !!}
-</div>
-
-<div class="form-group">
   {!! Form::submit('Create Post',['class'=>'btn btn-primary']) !!}
 </div>
 
 {!! Form::close() !!}
-
-</div>
-
-<div class="row">
-
-@include('includes.error')
-
-</div>
-
-@endsection
