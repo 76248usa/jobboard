@@ -22,7 +22,7 @@
       @foreach($posts as $post)
     <tr>
       <th scope="row">{{$post->id}}</th>
-      <td>{{$post->category_id}}</td>
+      <td>{{$post->category ? $post->category->name : 'Uncategorized'}}</td>
       <td>{{$post->photo_id}}</td>
       <td>{{$post->user->name}}</td>
       <td>{{$post->title}}</td>
