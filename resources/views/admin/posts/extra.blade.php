@@ -40,3 +40,26 @@
 </div>
 
 {!! Form::close() !!}
+
+
+ <!-- <tbody>
+    @if($posts)
+      @foreach($posts as $post)
+    <tr>
+      <th scope="row">{{$post->id}}</th>
+      <td>{{$post->category ? $post->category->name : 'Uncategorized'}}</td>
+      <td>{{$post->photo_id}}</td>
+      <td>{{$post->user->name}}</td>
+     <td><a href="{{route('posts.edit', $post->id)}}">{{$post->title}}</a></td> 
+     <td><a href="http://localhost:8888/jobboard/public/admin/posts/{{$post->id}}/edit"
+      <td>{{$post->body}}</td>
+      <td>{{$post->created_at}}</td>
+      <td>{{$post->updated_at->diffForHumans()}}</td>
+      <td></td>
+    </tr>
+    @endforeach
+  @endif
+
+  </tbody>
+</table> -->
+

@@ -3,13 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\PostsCreateRequest;
-use Illuminate\Support\Facades\Auth;
-use App\Post; 
 use App\Category;
 
-
-class AdminPostsController extends Controller
+class AdminCategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +14,9 @@ class AdminPostsController extends Controller
      */
     public function index()
     {
-      $posts = Post::all();
+        $categories = Category::all();
 
-      return view('admin.posts.index', compact('posts'));
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -30,9 +26,7 @@ class AdminPostsController extends Controller
      */
     public function create()
     {
-        $categories = Category::pluck('name', 'id')->all();
-
-        return view('admin.posts.create', compact('categories'));
+        return view('admin.categories.create');
     }
 
     /**
@@ -41,16 +35,13 @@ class AdminPostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PostsCreateRequest $request)
+    public function store(Request $request)
     {
-        $user = Auth::user();
-
         $input = $request->all();
 
-        $user->posts()->create($input);
+        Category::create($input);
 
-        return redirect('/admin/posts');
-       
+        return redirect('/admin/categories');
     }
 
     /**
@@ -61,10 +52,7 @@ class AdminPostsController extends Controller
      */
     public function show($id)
     {
-        
-
-
-
+        //
     }
 
     /**
@@ -75,12 +63,7 @@ class AdminPostsController extends Controller
      */
     public function edit($id)
     {
-        $post = Post::findOrFail($id);
-
-        $categories = Category::pluck('name', 'id')->all();
-
-        return view('admin.posts.edit', compact('post', 'categories'));
-
+        //
     }
 
     /**
@@ -90,13 +73,9 @@ class AdminPostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PostsCreateRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $input = $request->all();
-
-        Auth::user()->posts()->whereId($id)->first()->update($input);
-
-        return redirect('/admin/posts');
+        //
     }
 
     /**
@@ -107,10 +86,6 @@ class AdminPostsController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::findOrFail($id);
-
-        $post->delete();
-
-        return redirect('admin/posts');
+        //
     }
 }

@@ -19,11 +19,14 @@ class CreatePostsTable extends Migration
             $table->integer('category_id')->index()->unsigned()->nullable();;
             $table->integer('photo_id')->index()->unsigned()->nullable();
             $table->string('title');
+            $table->date('updated_at');
             $table->date('created_at');
-            $table->date('date_start')->unsigned()->nullable();
+            $table->date('date_start');
             $table->string('location');
             $table->text('body');
-            $table->timestamps();
+            
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
