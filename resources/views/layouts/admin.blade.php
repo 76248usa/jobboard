@@ -54,12 +54,7 @@
                   Create Post
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{route('posts.edit')}}">
-                  <span data-feather="shopping-cart"></span>
-                  Edit Post
-                </a>
-              </li>
+              
               <li class="nav-item">
                 <a class="nav-link" href="{{route('users.index')}}">
                   <span data-feather="users"></span>

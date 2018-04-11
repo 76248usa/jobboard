@@ -7,6 +7,7 @@ use App\Http\Requests\PostsCreateRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Post; 
 use App\Category;
+use App\User;
 
 
 class AdminPostsController extends Controller

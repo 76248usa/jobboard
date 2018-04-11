@@ -25,11 +25,10 @@
       <td>{{$post->category ? $post->category->name : 'Uncategorized'}}</td>
       <td>{{$post->photo_id}}</td>
       <td>{{$post->user->name}}</td>
-     <td><a href="http://localhost:8888/jobboard/public/admin/posts/{{$post->id}}/edit">
-      {{$post->title}}</a></td>
-      <!-- <td><a href="{{route('posts.edit', ['id' => $post->id])}}"><{{$post->title}}</a></td> -->
-      {{$post->title}}</a></td>
-       <td>{{str_limit($post->body, 20)}}</td>
+       <td><a href = "{{route('posts.edit', $post->id)}}">{{$post->title}}</a></td>
+      <!-- <td><a href="http://localhost:8888/jobboard/public/admin/posts/{{$post->id}}/edit">
+      {{$post->title}}</a></td> -->
+      <td>{{str_limit($post->body, 20)}}</td>
       <td>{{$post->created_at}}</td>
       <td>{{$post->updated_at->diffForHumans()}}</td>
       <td></td>
