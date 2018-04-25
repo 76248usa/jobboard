@@ -4,6 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
+use App\Category;
+use App\File;
+use App\Application;
 
 
 class Post extends Model
@@ -29,6 +32,14 @@ class Post extends Model
     public function category(){
       return $this->belongsTo('App\Category');
     }
+
+    public function files(){
+        return $this->hasMany('App\File');
+      }
+
+    public function application(){
+        return $this->belongsTo('App\Application');
+      }
 
 
 

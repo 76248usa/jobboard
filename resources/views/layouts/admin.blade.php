@@ -18,6 +18,8 @@
 
     <!-- Custom styles for this template -->
     <link href="/css/app2.css" rel="stylesheet">
+
+    @yield('styles')
   </head>
 
   <body>
@@ -73,6 +75,26 @@
                   Categories
                 </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{route('media.index')}}">
+                  <span data-feather="layers"></span>
+                  All Media
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{route('media.create')}}">
+                  <span data-feather="layers"></span>
+                  Upload Media
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{route('applications.index')}}">
+                  <span data-feather="layers"></span>
+                  Applications
+                </a>
+              </li>
+            
+            
             </ul>
 
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
@@ -130,7 +152,7 @@
       </div>
     </div>
 
-    @yield('footer')
+    @yield('scripts')
 
   </body>
 </html>

@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\CategoryRequest;
-use App\Category;
 
-class AdminCategoriesController extends Controller
+class PostsApplicationsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +13,18 @@ class AdminCategoriesController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-
-        return view('admin.categories.index', compact('categories'));
+        return view('admin.applications.index');
     }
 
-    
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -28,15 +32,9 @@ class AdminCategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryRequest $request)
+    public function store(Request $request)
     {
-         
-
-        $input = $request->all();
-
-        Category::create($input);
-
-        return redirect('/admin/categories');
+        //
     }
 
     /**
@@ -58,9 +56,7 @@ class AdminCategoriesController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::findOrFail($id);
-
-        return view('admin.categories.edit', compact('category'));
+        //
     }
 
     /**
@@ -72,13 +68,7 @@ class AdminCategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $input = $request->all();
-
-        $category = Category::findOrFail($id);
-
-        $category->update($input);
-
-        return redirect('/admin/categories');
+        //
     }
 
     /**
@@ -89,10 +79,6 @@ class AdminCategoriesController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::findOrFail($id);
-
-        $category->delete();
-
-        return redirect('/admin/categories');
+        //
     }
 }
