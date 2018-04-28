@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 use App\Category;
 use App\Post;
+use App\Application;
+use App\User;
+use Alert;
 
 class TeachersController extends Controller
 {
@@ -29,7 +33,8 @@ class TeachersController extends Controller
      */
     public function create()
     {
-        //
+        
+        //return view('admin.applications.application_create');
     }
 
     /**
@@ -40,7 +45,36 @@ class TeachersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        // $post = Post::all();
+
+        //  $request->all();
+
+        //   $user = Auth::user();
+
+ 
+        //     $data = [
+        //     'post_id' => $id,
+        //     'user_id' => Auth::user()->id,
+        //     'is_active' => 1,
+        //     'applicant' => $user->name,
+        //     'email' => $user->email,
+        //     'file' => $user->name,
+        //     'address' => $request->address,
+        //     'body' => $request->body,
+
+        // ];
+
+        // //return $data;
+
+        // $request->session()->flash('application created', 'Your application has been successfully created');
+
+        // $user->application()->create($data);
+
+        // redirect('/');
+        
+
+         
     }
 
     /**
@@ -76,7 +110,8 @@ class TeachersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+
     }
 
     /**
@@ -89,4 +124,6 @@ class TeachersController extends Controller
     {
         //
     }
+
+
 }

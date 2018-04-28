@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class PostsApplicationsController extends Controller
 {
@@ -23,7 +24,7 @@ class PostsApplicationsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.applications.application_create');
     }
 
     /**
@@ -34,7 +35,29 @@ class PostsApplicationsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $user = Auth::user();
+
+         $data = $request->all();
+ 
+            $data = [
+            
+            'user_id' => $user->id,
+
+            'is_active' => 1,
+            'applicant' => $user->name,
+            'email' => $user->email,
+            'file' => $user->name,
+            'address' => $request->address,
+            'body' => $request->body,
+
+         ];
+
+        $request->session()->flash('application created', 'Your application has been successfully created');
+
+        $user->application()->create($data);
+
+        redirect('/');
+        
     }
 
     /**

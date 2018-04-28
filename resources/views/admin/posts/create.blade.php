@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+
 <h1>Create Posts</h1>
 
 <div class="row">
@@ -50,5 +51,9 @@
 @include('includes.error')
 
 </div>
+
+<script type="text/javascript">
+alert("Welcome, please fill out the form");
+</script>
 
 @endsection

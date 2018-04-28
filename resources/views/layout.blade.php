@@ -119,24 +119,7 @@
 
   <body>
 
-      @yield('content')
-
-    <div class="container">
-      <header class="blog-header py-3">
-        <div class="row flex-nowrap justify-content-between align-items-center">
-          <div class="col-4 pt-1">
-
-          </div>
-           <div class="col-4 text-center">
-
-          </div>
-          <div class="col-4 d-flex justify-content-end align-items-center">
-
-
-
-
-
-             <nav class="navbar navbar-default navbar-static-top">
+    <nav class="navbar navbar-default navbar-static-top">
                 <div class="container">
 
 
@@ -182,6 +165,27 @@
                 </div>
             </nav>
 
+            
+
+      @yield('content')
+
+    <!-- <div class="container">
+      <header class="blog-header py-3">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+          <div class="col-4 pt-1">
+
+          </div>
+           <div class="col-4 text-center">
+
+          </div>
+          <div class="col-4 d-flex justify-content-end align-items-center">
+
+
+
+
+
+             
+
           </div>
         </div>
       </header>
@@ -195,7 +199,7 @@
 
           KISD offers many career opportunities to develop and grow while making a real difference in our students’ lives.</p>
         </div>
-      </div>
+      </div> -->
 
       <section id="section-three" class="section areYouRight">
 <div class="row">

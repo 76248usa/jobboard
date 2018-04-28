@@ -15,8 +15,7 @@ class CreateApplicationsTable extends Migration
     {
         Schema::create('applications', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('post_id')->index()->unsigned();
-            $table->integer('user_id')->index()->unsigned();
+            $table->integer('user_id')->index()->unsigned()->nullable();;
             $table->integer('is_active')->default(0);
             $table->string('applicant');
             $table->string('address');
@@ -25,7 +24,8 @@ class CreateApplicationsTable extends Migration
             $table->string('file');
             $table->timestamps();
 
-            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            
         });
     }
 

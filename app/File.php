@@ -13,4 +13,6 @@ class File extends Model
 	public function post(){
 		$this->belongsTo('App\Post');
 	}
+
+
 }

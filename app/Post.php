@@ -33,13 +33,15 @@ class Post extends Model
       return $this->belongsTo('App\Category');
     }
 
+    public function application(){
+        return $this->belongsTo('App\Application');
+      }
+
     public function files(){
         return $this->hasMany('App\File');
       }
 
-    public function application(){
-        return $this->belongsTo('App\Application');
-      }
+    
 
 
 

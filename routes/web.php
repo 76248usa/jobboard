@@ -40,7 +40,6 @@ Route::get('admin/users/{user}',['as' => 'users.show', 'uses' =>'AdminUsersContr
 //Route::get('/admin/users/{user}/edit', 'AdminUsersController@edit');
 
 
-
 Route::group(['middleware'=>'admin'], function(){
 
   Route::resource('/admin/users', 'AdminUsersController');
@@ -56,6 +55,14 @@ Route::group(['middleware'=>'admin'], function(){
 });
 
 Route::resource('/teacher', 'TeachersController');
+
+
+//Route::get('/admin/applications/create', 'TeachersController@create');
+
+ 
+
+
+
 
 // Route::get('admin/posts/{post}/edit', [ 'as' => 'posts.edit', 'uses' => 'AdminPostsController@edit']);
 

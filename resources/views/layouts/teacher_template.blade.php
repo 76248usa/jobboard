@@ -3,16 +3,12 @@
   <head>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 <!-- <meta http-equiv="Content-Style-Type" content="text/css"> -->
 <meta http-equiv="Content-Script-Type" content="text/javascript">
 <meta content="width=device-width, height=device-height, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" name="viewport">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta content="yes" name="apple-mobile-web-app-capable">
-
-
-
 
   <title>Teach with us</title>
 
@@ -28,6 +24,11 @@
     <!-- <link rel="stylesheet" href="https://d2i2zd9axwkr7h.cloudfront.net/career-sites/784572dbff40d5587882fdd04d6c9bbd223f9952/index.css">  -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    
+
+
+
 
     <script>
   var AddCSS = (function(){
@@ -84,6 +85,7 @@
   h1 {
   color: #02548E;
   font-family: Playfair Display;
+  text-align: center;
   }
 
   .primary-color-lighter:hover, .primary-color-lighter:focus {
@@ -120,14 +122,64 @@
  @yield('styles')
 
   </head>
+
   <body>
-    
-      
-      <div class="CompanyFollow">
-        <div id="company-follow" class="company-follow" data-react-component="company-follow">
-          
-        </div>
-      </div>
+
+  @include('partials.navbar')
+
+
+
+  <!-- 
+
+  <nav class="navbar navbar-default navbar-static-top">
+                <div class="container">
+
+
+                    <div class="collapse navbar-collapse" id="app-navbar-collapse">
+
+                        <ul class="nav navbar-nav">
+                            &nbsp;
+                        </ul>
+
+                        <!Right Side Of Navbar -->
+                        <ul class="nav navbar-nav navbar-right">
+                            <!-- Authentication Links -->
+                            @if (Auth::guest())
+                                <li><a href="{{ route('login') }}">Login</a></li>
+                                <li><a href="{{ route('register') }}">Register</a></li>
+                            @else
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                        {{ Auth::user()->name }} <span class="caret"></span>
+                                    </a>
+
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li>
+                                            <a href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                                Logout
+                                            </a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                {{ csrf_field() }}
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                            @endif
+                        </ul>
+
+
+
+                    </div>
+                </div>
+            </nav>
+
+
+
+
       <div class="ThemedContent">
         <div id="CompHTMLTop"><link rel="stylesheet" href="//d2i2zd9axwkr7h.cloudfront.net/company/js/slickNav/slicknav.css">
 <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300italic,400italic|Merriweather+Sans|Lato:700italic' rel='stylesheet' type='text/css'></div>
@@ -210,6 +262,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
 <script src="//dy5f5j6i37p1a.cloudfront.net/company/sites/149119/js/jquery.counterup.min.js"></script>
 <script src="//d2i2zd9axwkr7h.cloudfront.net/company/sites/145182/js/jquery.slicknav.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <script>
 	jQuery(document).ready(function($) {
 		$('.my-slider').unslider({
@@ -306,8 +360,6 @@ $('#DescriptionTable tr span').each(function() {
 
 //   });
 // })();
-
-
 </script>
 
 
