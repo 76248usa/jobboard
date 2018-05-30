@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\CategoryRequest;
 use App\Category;
+use App\Application;
+use App\User;
+use App\Post;
+use Auth;
 
 class AdminCategoriesController extends Controller
 {
@@ -16,8 +20,15 @@ class AdminCategoriesController extends Controller
     public function index()
     {
         $categories = Category::all();
+        $user = Auth::user();
 
-        return view('admin.categories.index', compact('categories'));
+        $count_users = User::count();
+        $count_applications = Application::count();
+        $count_cat = Category::count();
+        $count_posts = Post::count();
+
+        return view('admin.categories.index', compact('categories','user','count_users','count_cat','count_applications','count_posts'));
+    
     }
 
     

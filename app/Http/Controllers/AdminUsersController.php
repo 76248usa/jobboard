@@ -5,12 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Role;
+use App\Post;
 use App\Photo;
+use App\Category;
 use App\Http\Requests\UsersRequest;
 use App\Http\Requests\UsersEditRequest;
 use Session;
 use File;
 use Storage;
+use Auth;
+use App\Application;
 
 class AdminUsersController extends Controller
 {
@@ -23,7 +27,12 @@ class AdminUsersController extends Controller
     {
       $users = User::all();
 
-        return view('admin.users.index', compact('users'));
+      $count_users = User::count();
+      $count_applications = Application::count();
+      $count_cat = Category::count();
+      $count_posts = Post::count();
+
+        return view('admin.users.index', compact('users', 'count_users','count_cat','count_applications','count_posts'));
     }
 
     /**
@@ -34,8 +43,14 @@ class AdminUsersController extends Controller
     public function create()
     {
       $roles = Role::pluck('name', 'id')->all();
+      $user = Auth::user();
 
-        return view('admin.users.create', compact('roles'));
+      $count_users = User::count();
+      $count_applications = Application::count();
+      $count_cat = Category::count();
+      $count_posts = Post::count();
+
+        return view('admin.users.create', compact('roles','user','count_users','count_cat','count_applications','count_posts'));
     }
 
     /**
@@ -58,6 +73,10 @@ class AdminUsersController extends Controller
 
       }
 
+      //$photo = $request->input('photo_id');
+
+      //dd($photo);
+
       if($file = $request->file('photo_id')){
 
           $name = time(). $file->getClientOriginalName();
@@ -68,6 +87,7 @@ class AdminUsersController extends Controller
 
           $input['photo_id'] = $photo->id;
         }
+        
         User::create($input);
 
         return redirect('/admin/users');

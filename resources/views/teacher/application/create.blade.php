@@ -2,6 +2,8 @@
 
 @section('content')
 
+@include('includes.tiny')
+
 <style>
 
 .jumbotron {
@@ -17,7 +19,7 @@
 
 <div class="col-sm-8 ">
 
-{!! Form::open(['method'=>'POST', 'action'=>'PostsApplicationsController@store', 'files'=>true])!!}
+{!! Form::open(['method'=>'POST', 'action'=> ['PostsApplicationsController@store', $post->id], 'files'=>true])!!}
 
 <div class="form-group">
   {!! Form::label('applicant', 'First, middle and last name:') !!}
@@ -26,7 +28,7 @@
 
 <div class="form-group">
   {!! Form::label('address', 'Address:') !!}
-  {!! Form::email('address', null,['class'=>'form-control']) !!}
+  {!! Form::text('address', null,['class'=>'form-control']) !!}
 </div>
 
 <div class="form-group">
@@ -35,14 +37,16 @@
 </div>
 
 <div class="form-group">
-  {!! Form::label('body', 'Resume:') !!}
-  {!! Form::textarea('body', null,['class'=>'form-control']) !!}
+  {!! Form::label('file', 'Upload Resume:') !!}
+  {!! Form::file('file', null, ['class'=>'form-control']) !!}
 </div>
 
 <div class="form-group">
-  {!! Form::label('file', 'Attachment:') !!}
-  {!! Form::file('file', null, ['class'=>'form-control']) !!}
+  {!! Form::label('body', 'Write Resume:') !!}
+  {!! Form::textarea('body', null,['class'=>'form-control']) !!}
 </div>
+
+
 
 <div>
 {!! Form::hidden('role_id', 2) !!}
@@ -64,6 +68,7 @@
 @endif
 
 
+
 @include('includes.error')
 
 @endsection
@@ -75,4 +80,29 @@ alert("Sign  Up or Log In");
 </script>
 
 @endsection
+
+
+@section('styles')
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/min/dropzone.min.css">
+
+@endsection
+
+
+
+@section('scripts')
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/min/dropzone.min.js"></script>
+
+@endsection
+
+
+
+
+
+</div>
+
+
+
+<!--  -->
 

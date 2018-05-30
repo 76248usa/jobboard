@@ -33,8 +33,8 @@ class TeachersController extends Controller
      */
     public function create()
     {
+
         
-        //return view('admin.applications.application_create');
     }
 
     /**
@@ -65,9 +65,9 @@ class TeachersController extends Controller
 
         // ];
 
-        // //return $data;
+        // return $data;
 
-        // $request->session()->flash('application created', 'Your application has been successfully created');
+        // // $request->session()->flash('application created', 'Your application has been successfully created');
 
         // $user->application()->create($data);
 
@@ -85,9 +85,11 @@ class TeachersController extends Controller
      */
     public function show($id)
     {
-        $post = Post::findOrFail($id);
+        $application = Application::findOrFail($id);
 
-        return view('single_post', compact('post'));
+        $photo = $application->photo;
+        
+        return view('teacher.application.show', compact('application', 'photo'));
     }
 
     /**

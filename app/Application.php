@@ -1,18 +1,18 @@
 <?php
 
 namespace App;
-
-use App\Post;
-use App\User;
-
 use Illuminate\Database\Eloquent\Model;
+use App\Post;
+use App\Photo;
+use App\User;
 
 class Application extends Model
 {
     protected $fillable = [
     	'applicant',
-        'user_id',
         'post_id',
+        'user_id',
+        'photo_id',
     	'address',
     	'email',
     	'body',
@@ -20,7 +20,15 @@ class Application extends Model
     	'is_active'
     ];
 
-    public function user(){
+    public function post(){
+        return $this->belongsTo('App\Post');
+      }
+
+      public function user(){
         return $this->belongsTo('App\User');
+      }
+
+      public function photo(){
+        return $this->belongsTo('App\Photo');
       }
 }

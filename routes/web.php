@@ -1,6 +1,9 @@
 <?php
 
 use App\Category;
+use App\User;
+use App\Application;
+use App\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +17,9 @@ use App\Category;
 */
 
 Route::get('/', function () {
+  $posts = Post::all();
 	$categories = Category::all();
-    return view('layout', compact('categories'));
+    return view('teacher', compact('categories', 'posts'));
 });
 
 Route::get('/teacher', function () {
@@ -25,19 +29,11 @@ Route::get('/teacher', function () {
 
 Auth::routes();
 
+Route::get('/post/{id}',['as'=>'home.post', 'uses'=> 'AdminPostsController@post']);
+
 Route::get('/home', 'HomeController@index')->name('home');
 
-/*
-
-Route::get('admin/users/create', [ 'as' => 'users.create', 'uses' => 'AdminUsersController@create']);
-
-Route::get('admin/users/{user}/edit', [ 'as' => 'users.edit', 'uses' => 'AdminUsersController@edit']);
-
-Route::delete('/admin/users/{user}', ['as' => 'users.destroy', 'uses' =>'AdminUsersController@destroy']);
-
-Route::get('admin/users/{user}',['as' => 'users.show', 'uses' =>'AdminUsersController@show']); */
-
-//Route::get('/admin/users/{user}/edit', 'AdminUsersController@edit');
+Route::get('/admin/download',['as'=>'download', 'uses'=>'DownloadController@downfunc']);
 
 
 Route::group(['middleware'=>'admin'], function(){
@@ -50,11 +46,16 @@ Route::group(['middleware'=>'admin'], function(){
 
   Route::resource('/admin/media', 'AdminMediasController');
 
-  Route::resource('/admin/applications', 'PostsApplicationsController');
+  Route::resource('/admin/applications', 'AdminApplicationsController');
+
+  //Route::resource('/admin/application/replies', 'ApplicationsRepliesController');
 
 });
 
 Route::resource('/teacher', 'TeachersController');
+
+Route::resource('/teachers/{teacher}/application', 'TeachersController');
+
 
 
 //Route::get('/admin/applications/create', 'TeachersController@create');
@@ -73,10 +74,15 @@ Route::resource('/teacher', 'TeachersController');
 
 // Route::get('admin/posts/{user}/edit', [ 'as' => 'posts.edit', 'uses' => 'AdminPostsController@edit']);
 
-
-
-
-
 Route::get('/admin', function(){
-  return view('admin.index');
+
+  $user = Auth::user();
+  $count_users = User::count();
+  $count_applications = Application::count();
+  $count_cat = Category::count();
+  $count_posts = Post::count();
+
+  //$photo = $user->photo->file;
+
+  return view('admin.index', compact('user','count_users','count_cat','count_applications','count_posts'));
 });

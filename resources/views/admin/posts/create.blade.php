@@ -1,6 +1,8 @@
-@extends('layouts.admin')
+@extends('layouts.newadmin')
 
 @section('content')
+
+@include('includes.tiny')
 
 <h1>Create Posts</h1>
 

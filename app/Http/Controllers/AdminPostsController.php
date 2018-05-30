@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Post; 
 use App\Category;
 use App\User;
+use App\Application;
 
 
 class AdminPostsController extends Controller
@@ -17,11 +18,18 @@ class AdminPostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-      $posts = Post::all();
 
-      return view('admin.posts.index', compact('posts'));
+      $user = Auth::user();
+      $posts = Post::all();
+      $count_users = User::count();
+      $count_applications = Application::count();
+      $count_cat = Category::count();
+      $count_posts = Post::count();
+
+      return view('admin.posts.index', compact('posts', 'user','count_users','count_cat','count_applications','count_posts'));
     }
 
     /**
@@ -31,9 +39,16 @@ class AdminPostsController extends Controller
      */
     public function create()
     {
-        $categories = Category::pluck('name', 'id')->all();
 
-        return view('admin.posts.create', compact('categories'));
+      $categories = Category::pluck('name', 'id')->all();
+      $user = Auth::user();
+
+      $count_users = User::count();
+      $count_applications = Application::count();
+      $count_cat = Category::count();
+      $count_posts = Post::count();
+
+        return view('admin.posts.create', compact('categories', 'user','count_users','count_cat','count_applications','count_posts'));
     }
 
     /**
@@ -62,9 +77,16 @@ class AdminPostsController extends Controller
      */
     public function show($id)
     {
+       
         
 
+    }
 
+    public function post($id){
+
+    $post = Post::findOrFail($id);
+
+        return view('teacher.single_post', compact('post'));
 
     }
 

@@ -1,17 +1,19 @@
-/* stylelint-disable selector-list-comma-newline-after */
-
 .blog-header {
   line-height: 1;
   border-bottom: 1px solid #e5e5e5;
 }
 
 .blog-header-logo {
-  font-family: "Alegreya Sans", Georgia, "Times New Roman", serif;
+  font-family: "Open Sans Condensed", Georgia, "Times New Roman", serif;
   font-size: 2.25rem;
 }
 
 .blog-header-logo:hover {
   text-decoration: none;
+}
+
+body {
+  background: #000;
 }
 
 h1, h2, h3, h4, h5, h6 {

@@ -21,6 +21,11 @@ class Post extends Model
       'location'
     ];
 
+
+    public function applications(){
+        return $this->hasMany('App\Application');
+      }
+
     public function user(){
       return $this->belongsTo('App\User');
     }
@@ -33,9 +38,7 @@ class Post extends Model
       return $this->belongsTo('App\Category');
     }
 
-    public function application(){
-        return $this->belongsTo('App\Application');
-      }
+    
 
     public function files(){
         return $this->hasMany('App\File');
