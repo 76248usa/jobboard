@@ -19,7 +19,7 @@ class Admin
     {
         if(Auth::check()){
 
-          if(Auth::user()->role->name == 'administrator' && Auth::user()->is_active == 1) {
+          if(Auth::user()->role_id == 1 && Auth::user()->is_active == 1) {
 
             return $next($request);
 

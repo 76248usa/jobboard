@@ -98,11 +98,17 @@ class AdminPostsController extends Controller
      */
     public function edit($id)
     {
+        $user = Auth::user();
         $post = Post::findOrFail($id);
 
         $categories = Category::pluck('name', 'id')->all();
 
-        return view('admin.posts.edit', compact('post', 'categories'));
+        $count_users = User::count();
+      $count_applications = Application::count();
+      $count_cat = Category::count();
+      $count_posts = Post::count();
+
+        return view('admin.posts.edit', compact('post', 'categories', 'user', 'count_users','count_cat','count_applications','count_posts'));
 
     }
 

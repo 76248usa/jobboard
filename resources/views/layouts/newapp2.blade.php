@@ -12,7 +12,6 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif;
 font-weight: lighter;}
@@ -98,9 +97,16 @@ body, html {
 
 
 
-    <a href="#home" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-home"></i>HOME</a>
-    <a href="#about" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> ABOUT</a>
-    <a href="#portfolio" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> PORTFOLIO</a>
+    <a href="{{route('teacher.index')}}" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-home"></i>HOME</a>
+
+    @if(Auth::check())
+
+      @if(Auth::user()->role_id)
+    <a href="http://localhost:8888/jobboard/public/admin" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> ADMIN</a>
+      @endif
+      
+    @endif
+    
     <a href="#contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> CONTACT</a>
     <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
       <i class="fa fa-search"></i>
@@ -131,7 +137,7 @@ body, html {
 <!-- Second Parallax Image with Portfolio Text -->
 <div class="bgimg-2 w3-display-container w3-opacity-min">
   <div class="w3-display-middle">
-     <h3><i>Fill out the application and land your dream job today!</i></h3>
+     <h3><i></i></h3>
   </div>
 </div>
 
@@ -161,21 +167,7 @@ body, html {
  
 <!-- Add Google Maps -->
 <script>
-function myMap()
-{
-  myCenter=new google.maps.LatLng(41.878114, -87.629798);
-  var mapOptions= {
-    center:myCenter,
-    zoom:12, scrollwheel: false, draggable: false,
-    mapTypeId:google.maps.MapTypeId.ROADMAP
-  };
-  var map=new google.maps.Map(document.getElementById("googleMap"),mapOptions);
 
-  var marker = new google.maps.Marker({
-    position: myCenter,
-  });
-  marker.setMap(map);
-}
 
 // Modal Image Gallery
 function onClick(element) {
@@ -207,9 +199,7 @@ function toggleFunction() {
 }
 </script>
 
-<script type="text/javascript">
-alert("Sign  Up or Log In");
-</script>
+
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
 <!--

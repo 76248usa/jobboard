@@ -82,20 +82,6 @@ alert("Sign  Up or Log In");
 @endsection
 
 
-@section('styles')
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/min/dropzone.min.css">
-
-@endsection
-
-
-
-@section('scripts')
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/min/dropzone.min.js"></script>
-
-@endsection
-
 
 
 

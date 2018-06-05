@@ -19,11 +19,13 @@ class TeachersController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
+
         $categories = Category::all();
-        //$posts = Post::all();
+        
         $posts = Post::all();
 
-        return view('teacher', compact('categories', 'posts'));
+        return view('teacher', compact('categories', 'posts', 'user'));
     }
 
     /**
@@ -33,6 +35,7 @@ class TeachersController extends Controller
      */
     public function create()
     {
+        return view('teacher.single_post'); 
 
         
     }
@@ -43,36 +46,29 @@ class TeachersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ApplicationRequest $request)
     {
 
-        // $post = Post::all();
+        $user = Auth::user();
 
-        //  $request->all();
+        $input = $request->all();
 
-        //   $user = Auth::user();
+        $photo = $request->input('photo_id');
 
- 
-        //     $data = [
-        //     'post_id' => $id,
-        //     'user_id' => Auth::user()->id,
-        //     'is_active' => 1,
-        //     'applicant' => $user->name,
-        //     'email' => $user->email,
-        //     'file' => $user->name,
-        //     'address' => $request->address,
-        //     'body' => $request->body,
+         if($file = $request->file('photo_id')){
 
-        // ];
+          $name = time(). $file->getClientOriginalName();
 
-        // return $data;
+          $file->move('images', $name);
 
-        // // $request->session()->flash('application created', 'Your application has been successfully created');
+          $photo = Photo::create(['file'=>$name]);
 
-        // $user->application()->create($data);
+          $input['photo_id'] = $photo->id;
+        } 
 
-        // redirect('/');
-        
+        $user->application()->create($input); 
+
+        return view('teacher.thankyou');
 
          
     }

@@ -10,9 +10,9 @@ class Application extends Model
 {
     protected $fillable = [
     	'applicant',
-        'post_id',
-        'user_id',
-        'photo_id',
+      'post_id',
+      'user_id',
+      'photo_id',
     	'address',
     	'email',
     	'body',

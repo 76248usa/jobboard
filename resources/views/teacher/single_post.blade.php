@@ -15,9 +15,13 @@
 
 
 
+input {
+   width: 80%;
+}
 
-
-
+#rules {
+  font-size: 1.5rem;
+}
 
 </style>
 
@@ -74,6 +78,8 @@ function myFunction() {
                 </div>
             </nav>
   -->
+  
+
        <br>
 		    <h3>{{$post->title}}</h3><br>
 		    <p>ESSENTIAL JOB DUTIES AND RESPONSIBILITIES</p>
@@ -82,40 +88,39 @@ function myFunction() {
 		    <p>{{$post->location}}</p>
 		    <p>STARTING DATE:</p>
 		    <p>{{$post->date_start}}</p>
-
-
-
-<style>
-
+        <br>
+        <h4>FILL OUT APPLICATION BELOW</h4>
 
 </style>
 @endsection   
 
 @section('content2')
+
+<h2 style="text-align: center";>Create Application</h2>
 <br>
-<h1 style="text-align: center";>Create Application</h1>
-<br>
+
 @if(Auth::check())
 
 <div class="col-sm-12 ">
 
-
-
 {!! Form::open(['method'=>'POST', 'action'=> 'AdminApplicationsController@store', 'files'=>true])!!}
+ 
+  <div class="form-group">
 
-<div id="form-font" class="form-group">
   {!! Form::label('applicant', 'First, middle and last name:') !!}
-  {!! Form::text('applicant', null,['class'=>'form-control']) !!}
+  {!! Form::text('applicant', null,['class'=>'form-control']) !!} 
 </div>
 
-<input type="number" name="post_id" value="{{$post->id}}">
+  <input type="hidden"  name="post_id" value="{{$post->id}}">
 
 <div class="form-group">
+
   {!! Form::label('address', 'Address:') !!}
-  {!! Form::email('address', null,['class'=>'form-control']) !!}
+  {!! Form::text('address', null,['class'=>'form-control']) !!} 
 </div>
 
 <div class="form-group">
+
   {!! Form::label('email', 'Email:') !!}
   {!! Form::email('email', null,['class'=>'form-control']) !!}
 </div>
@@ -127,15 +132,13 @@ function myFunction() {
 
 @include('includes.tiny')
 
-<div class="form-group">
+<div class="form-group"> 
+
   {!! Form::label('body', 'Create Resume:') !!}
   {!! Form::textarea('body', null,['class'=>'form-control']) !!}
-</div>
+</div> 
 
-
-
-
-<div>
+ <div>
 {!! Form::hidden('role_id', 2) !!}
 </div>
 
@@ -148,33 +151,29 @@ function myFunction() {
 {!! Form::hidden('is_active', 1) !!}
 </div>
 
-<div class="form-group">
-  {!! Form::submit('Submit Application',['class'=>'btn btn-primary']) !!}
+<div>
+
+<button class="btn btn-primary">
+Submit Application.</button>
+
+@endif
+
 </div>
-
-@if(Session::has('application_message'))
-
-  <p>{{session('application_message')}}</p>
-
- @endif
 
 {!! Form::close() !!} 
 
  
-
-
-
 @include('includes.error')
 
 @endsection
 
 @section('scripts')
 
+<script type="text/javascript">
+alert("Are you signed in?");
+</script>
+
 @endsection
-
-@endif
-
-
 
 </div>
 

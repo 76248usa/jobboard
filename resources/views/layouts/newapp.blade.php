@@ -98,9 +98,9 @@ body, html {
 
 
 
-    <a href="#home" class="w3-bar-item w3-button"><i class="fa fa-home"></i>HOME</a>
+    <a href="{{route('teacher.index')}}" class="w3-bar-item w3-button"><i class="fa fa-home"></i>HOME</a>
     <a href="#about" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> ABOUT</a>
-    <a href="#portfolio" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-th"></i> PORTFOLIO</a>
+    
     <a href="#contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> CONTACT</a>
     <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
       <i class="fa fa-search"></i>
@@ -110,11 +110,16 @@ body, html {
   <!-- Navbar on small screens -->
   <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
 
+  
 
+  @if(Auth::check())
 
+      @if(Auth::user()->role_id)
 
+  <a href="http://localhost:8888/jobboard/public/admin" class="w3-bar-item w3-button" onclick="toggleFunction()">ADMIN</a>
 
-    <a href="#about" class="w3-bar-item w3-button" onclick="toggleFunction()">ABOUT</a>
+  @endif
+    
     <a href="#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()">PORTFOLIO</a>
     <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">CONTACT</a>
     <a href="#" class="w3-bar-item w3-button">SEARCH</a>

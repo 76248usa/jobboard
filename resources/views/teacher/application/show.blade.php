@@ -1,8 +1,8 @@
-@extends('layouts.newapp')
+@extends('layouts.newapp2')
 
 @section('content')
-
-<h1>Applicant</h1>
+<br>
+<h2><i>Applicant</i></h2>
 
 <style>
 
@@ -19,6 +19,7 @@ function myFunction() {
     alert("I am an alert box!");
 }
 </script> -->
+<br>
 
 
             <h3>{{$application->applicant}}</h3><br>
@@ -33,7 +34,11 @@ function myFunction() {
 
                  <img height="50" border-radius="50px" src="http://localhost:8888/jobboard/public/images/{{($photo->file)}}" alt="">
 
-            @endif</p>
+            @endif</p><br><br>
+
+            <h4>RESUME FILE CAN BE PRINTED FROM ADMIN PAGE</h4>
+
+            <br>
 
              
              

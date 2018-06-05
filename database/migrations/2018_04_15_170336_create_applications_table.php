@@ -25,7 +25,8 @@ class CreateApplicationsTable extends Migration
             $table->string('email');
             $table->text('body');
             $table->string('file');
-            $table->timestamps();
+            $table->date('created_at');
+            $table->date('updated_at');
 
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
             

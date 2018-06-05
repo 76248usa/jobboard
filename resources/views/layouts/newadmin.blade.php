@@ -19,7 +19,10 @@ font-weight: lighter;}
 
 
 <!-- Top container -->
-<div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
+<div class="w3-bar w3-top w3-black w3-medium" style="z-index:4">
+
+  <a href="{{route('teacher.index')}}" class="w3-bar-item w3-button"><i class="fa fa-home"></i>Home</a>
+
   <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
   <span class="w3-bar-item w3-right">Logo</span>
 </div>
@@ -29,17 +32,22 @@ font-weight: lighter;}
   <div class="w3-container w3-row">
     <div class="w3-col s4">
 
-      @if($user->photo)
+      
+    
+        @if($user->photo)
   <!-- <img src="{{$user->photo->file}}" alt="" height="150" class="img-responsive"> -->
   <img width="50" src="http://localhost:8888/jobboard/public/images/{{($user->photo->file)}}" class="w3-circle">
-  @else
-  <img src="{{'http://placehold.it/'}}" alt="" width="46" class="img-responsive">
-  @endif
+        
 
-      @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
+        @else
+  <img src="{{'http://placehold.it/'}}" alt="" width="46" class="img-responsive">
+  
+        @endif
+   
+                            <!-- <li><a href="{{ route('login') }}">Login</a></li>
+                            <li><a href="{{ route('register') }}">Register</a></li> -->
+   
+                        
     </div>
     <div class="w3-col s8 w3-bar">
       <span>Welcome, <strong>{{ Auth::user()->name }}</strong></span><br>
@@ -56,8 +64,6 @@ font-weight: lighter;}
 
     
 
-    @endif
-
 
   </div>
   <hr>
@@ -68,13 +74,11 @@ font-weight: lighter;}
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
     <a href="{{route('posts.index')}}" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  All Posts</a>
     <a href="{{route('posts.create')}}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Create Post</a>
-    <a href="{{route('users.index')}}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  All Users</a>
+    
     <a href="{{route('users.create')}}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Create User</a>
     <a href="{{route('categories.index')}}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Categories</a>
-    <a href="{{route('media.index')}}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i>  All Media</a>
     <a href="{{route('applications.index')}}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>  Applications</a>
     <a href="{{route('download')}}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  Download Resume</a>
-    <a href="{{route('media.create')}}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Upload Media</a><br><br>
   </div>
 </nav>
 

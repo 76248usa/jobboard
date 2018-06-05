@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
 use App\Role;
 use App\Post;
 use App\Photo;
@@ -15,6 +14,7 @@ use File;
 use Storage;
 use Auth;
 use App\Application;
+use App\User;
 
 class AdminUsersController extends Controller
 {
@@ -25,14 +25,15 @@ class AdminUsersController extends Controller
      */
     public function index()
     {
-      $users = User::all();
+      $users = User::with('posts')->get();
 
+    
       $count_users = User::count();
       $count_applications = Application::count();
       $count_cat = Category::count();
       $count_posts = Post::count();
 
-        return view('admin.users.index', compact('users', 'count_users','count_cat','count_applications','count_posts'));
+        return view('admin.users.index', compact('users','count_users','count_cat','count_applications','count_posts'));
     }
 
     /**
@@ -50,7 +51,7 @@ class AdminUsersController extends Controller
       $count_cat = Category::count();
       $count_posts = Post::count();
 
-        return view('admin.users.create', compact('roles','user','count_users','count_cat','count_applications','count_posts'));
+      return view('admin.users.create', compact('roles','user','count_users','count_cat','count_applications','count_posts'));
     }
 
     /**

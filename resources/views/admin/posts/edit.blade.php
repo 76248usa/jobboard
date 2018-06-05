@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.newadmin')
 
 @section('content')
 <h1>Edit Post</h1>

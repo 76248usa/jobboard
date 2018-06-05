@@ -71,7 +71,14 @@ class AdminCategoriesController extends Controller
     {
         $category = Category::findOrFail($id);
 
-        return view('admin.categories.edit', compact('category'));
+        $user = Auth::user();
+
+        $count_users = User::count();
+        $count_applications = Application::count();
+        $count_cat = Category::count();
+        $count_posts = Post::count();
+
+        return view('admin.categories.edit', compact('category','user', 'count_users','count_cat','count_applications','count_posts'));
     }
 
     /**

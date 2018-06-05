@@ -42,6 +42,7 @@ img {
   @foreach($users as $user)
   <tr>
     <th scope="row">{{$user->id}}</th>
+    <td>{{$user->name}}</td>
 
      <td>@if($user->photo)
      <img height="50" border-radius="50px" src="http://localhost:8888/jobboard/public/images/{{($user->photo->file)}}" alt="">
@@ -49,8 +50,6 @@ img {
      @else
      <img height="50" src="http://localhost:8888/jobboard/public/images/avatar.png" alt="">
      @endif</td>
-
-     <td><a href="{{route('users.edit', ['id' => $user->id]) }}">{{$user->name}}</a></td>
 
       <td>{{$user->email}}</td>
       <td>{{$user->role->name}}</td>

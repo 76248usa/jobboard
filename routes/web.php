@@ -22,67 +22,50 @@ Route::get('/', function () {
     return view('teacher', compact('categories', 'posts'));
 });
 
-Route::get('/teacher', function () {
-	$categories = Category::all();
-    return view('teacher', compact('categories'));
-});
-
 Auth::routes();
 
 Route::get('/post/{id}',['as'=>'home.post', 'uses'=> 'AdminPostsController@post']);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/admin/download',['as'=>'download', 'uses'=>'DownloadController@downfunc']);
-
-
-Route::group(['middleware'=>'admin'], function(){
-
-  Route::resource('/admin/users', 'AdminUsersController');
-
-  Route::resource('/admin/posts', 'AdminPostsController');
-
-  Route::resource('/admin/categories', 'AdminCategoriesController');
-
-  Route::resource('/admin/media', 'AdminMediasController');
-
-  Route::resource('/admin/applications', 'AdminApplicationsController');
-
-  //Route::resource('/admin/application/replies', 'ApplicationsRepliesController');
-
-});
-
 Route::resource('/teacher', 'TeachersController');
 
 Route::resource('/teachers/{teacher}/application', 'TeachersController');
 
+Route::resource('/applications', 'AdminApplicationsController');
 
+Route::group(['middleware'=>'admin'], function(){
 
-//Route::get('/admin/applications/create', 'TeachersController@create');
+Route::resource('/admin/users', 'AdminUsersController');
 
- 
+Route::resource('/admin/posts', 'AdminPostsController');
 
+Route::resource('/admin/categories', 'AdminCategoriesController');
 
+Route::resource('/admin/media', 'AdminMediasController');
 
+Route::get('/admin/download',['as'=>'download', 'uses'=>'DownloadController@downfunc']);
 
-// Route::get('admin/posts/{post}/edit', [ 'as' => 'posts.edit', 'uses' => 'AdminPostsController@edit']);
+});
 
-// Route::get('/edit/', [ 'as' => 'posts.edit', 'uses' => 'AdminPostsController@edit']);
-
-
-
-
-// Route::get('admin/posts/{user}/edit', [ 'as' => 'posts.edit', 'uses' => 'AdminPostsController@edit']);
-
-Route::get('/admin', function(){
+Route::get('/admin',function(){
 
   $user = Auth::user();
+
   $count_users = User::count();
   $count_applications = Application::count();
   $count_cat = Category::count();
   $count_posts = Post::count();
 
-  //$photo = $user->photo->file;
+  return view('admin.index', compact('user','count_users','count_applications','count_cat','count_posts'));
 
-  return view('admin.index', compact('user','count_users','count_cat','count_applications','count_posts'));
 });
+
+
+
+
+
+
+
+
+

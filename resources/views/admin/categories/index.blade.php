@@ -21,6 +21,7 @@
 
 {!! Form::close() !!}
 
+
 @if(count($errors)> 0)
 
 <div class="alert alert-danger">
@@ -55,6 +56,7 @@
       <th scope="row">{{$category->id}}</th>
       <td><a href = "{{route('categories.edit', $category->id)}}">{{$category->name}}</a></td>
       <td>{{$category->created_at ? $category->created_at->diffForHumans() : 'no date'}}</td>
+      
     </tr>
 
     @endforeach

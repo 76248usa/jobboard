@@ -1,9 +1,8 @@
-@extends('layouts.admin')
+@extends('layouts.newadmin')
 
 @section('content')
-<h1>Applications</h1>
 
-@foreach($applications as $application)
+<h1>Applications</h1>
 
 <table class="table table-striped">
   <thead>
@@ -12,10 +11,13 @@
       <th scope="col">Owner</th>
       <th scope="col">Title</th>
       <th scope="col">Body</th>
+       <th scope="col">File</th>
       <th scope="col">Created</th>
-      <th scope="col">Updated</th>
+      
     </tr>
   </thead>
+
+  @foreach($applications as $application)
 
   <tbody>
     <tr>
@@ -23,24 +25,22 @@
       
       <td><a href="{{route('teacher.show', $application->id)}}">{{$application->applicant}}</a></td>
       <td>{{($application->post_id)}}</td>
-      <td>{{strip_tags($application->body)}}</td>
-
+      <td>{{strip_tags(str_limit($application->body,30))}}</td>
+      <td>{{($application->post_id)}}</td>
       <td>
 
       @if($application->photo)
 
-      <img src="http://localhost:8888/jobboard/public/images/{{$application->photo->file}}">
+      <img height = "50px" src="http://localhost:8888/jobboard/public/images/{{$application->photo->file}}">
 
       @else
 
       "no file"
 
-      @endif</td>
+      @endif </td>
+      <td>{{($application->created_at->diffforhumans())}}</td>
 
        
-      
-    
-
 @endforeach
 
 
