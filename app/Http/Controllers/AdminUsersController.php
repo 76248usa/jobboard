@@ -25,15 +25,14 @@ class AdminUsersController extends Controller
      */
     public function index()
     {
-      $users = User::with('posts')->get();
+      $users = User::all();
 
-    
-      $count_users = User::count();
-      $count_applications = Application::count();
-      $count_cat = Category::count();
-      $count_posts = Post::count();
+      //response()->json($users);
 
-        return view('admin.users.index', compact('users','count_users','count_cat','count_applications','count_posts'));
+
+      return view('admin.users.index2', compact('users'));
+
+      // return view('admin.users.index', compact('users','count_users','count_cat','count_applications','count_posts'));
     }
 
     /**
@@ -45,6 +44,7 @@ class AdminUsersController extends Controller
     {
       $roles = Role::pluck('name', 'id')->all();
       $user = Auth::user();
+      response()->json($user);
 
       $count_users = User::count();
       $count_applications = Application::count();
@@ -74,10 +74,6 @@ class AdminUsersController extends Controller
 
       }
 
-      //$photo = $request->input('photo_id');
-
-      //dd($photo);
-
       if($file = $request->file('photo_id')){
 
           $name = time(). $file->getClientOriginalName();
@@ -92,8 +88,6 @@ class AdminUsersController extends Controller
         User::create($input);
 
         return redirect('/admin/users');
-
-
     }
 
     /**
@@ -106,7 +100,7 @@ class AdminUsersController extends Controller
     {
       $user = User::findOrFail($id);
 
-        return view('admin.users.show');
+        //return view('admin.users.show');
     }
 
     /**
@@ -119,10 +113,9 @@ class AdminUsersController extends Controller
     {
       $user = User::findOrFail($id);
 
-
       $roles = Role::pluck('name', 'id')->all();
 
-      return view('admin.users.edit', compact('user', 'roles'));
+      return view('admin.users.edit2', compact('user', 'roles'));
     }
 
     /**
@@ -160,14 +153,6 @@ class AdminUsersController extends Controller
           $input['photo_id'] = $photo->id;
         }
 
-      // $user->name  = $input['name'];
-      // $user->email  = $input['email'];
-      // $user->password  = $input['password'];
-      // $user->role_id  = $input['role_id'];
-      // $user->is_active  = $input['is_active'];
-      //
-      // $user->save();
-
       $user->update($input);
 
       Session::flash('updated_user', 'The user has been updated');
@@ -186,9 +171,14 @@ class AdminUsersController extends Controller
     {
         $user = User::findOrFail($id);
 
-        unlink(public_path() .  '/images/' . $user->photo->file );
-
         $user->delete();
+
+        if($user->photo->file) {
+
+        unlink(public_path() .  '/images/' . $user->photo->file );
+      }
+
+
 
         Session::flash('deleted_user', 'The user has been deleted');
 

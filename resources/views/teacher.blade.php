@@ -8,24 +8,26 @@
 <link href="{{asset('css/app.css') }}" rel="stylesheet">
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 
+
+
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif;
-font-weight: lighter;} 
+font-weight: lighter;
+;}
+
 h3{
   color: white;
 }
 body, html {
     height: 100%;
-    color: #777;
+    color: #000;
     line-height: 1.8;
+    
 }
 
 /* Create a Parallax Effect */
@@ -64,16 +66,21 @@ body, html {
     }
 }
 
-#myNavbar {
-  color: white;
+.btn-group {
+    text-align: center;
 }
 
+
+#myNavbar {
+  color: white;
+  font-size: 14px;
+}
 #myInput {
   background-image: url('/css/searchicon.png');
   background-position: 10px 10px;
   background-repeat: no-repeat;
   width: 60%;
-  font-size: 16px;
+  font-size: 14px;
   padding: 12px 20px 12px 40px;
   border: 1px solid #ddd;
   margin-bottom: 12px;
@@ -83,7 +90,7 @@ body, html {
   border-collapse: collapse;
   width: 100%;
   border: 1px solid #ddd;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 #myTable th, #myTable td {
@@ -118,15 +125,15 @@ body, html {
                                 <a class="w3-bar-item w3-button w3-hide-small" href="{{ route('register') }}">REGISTER</a>
                             @else
                                 
-                                    <a class="w3-bar-item w3-button w3-hide-small" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                        {{ Auth::user()->name }} <span class="caret"></span>
+                                    <a class="w3-bar-item w3-button w3-hide-small" datarole="button" aria-expanded="false">
+                                        {{Auth::user()->name}} 
                                     </a>
 
                                     
                                             <a class="w3-bar-item w3-button w3-hide-small" href="{{ route('logout') }}"
                                                 onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
-                                                LOGOUT
+                                                Logout
                                             </a>
 
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -137,55 +144,42 @@ body, html {
                             @endif
 
 
-
-
-
-    <a href="{{route('teacher.index')}}" class="w3-bar-item w3-button"><i class="fa fa-home"></i>HOME</a>
-
     @if(Auth::check())
 
       @if(Auth::user()->role_id)
 
 
-    <a href="http://localhost:8888/jobboard/public/admin" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-user"></i> ADMIN</a>
+    <a href="http://localhost:8888/jobboard/public/admin" class="w3-bar-item w3-button w3-hide-small">Admin</a>
 
       @endif
 
     @endif
 
-    <a href="#contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> CONTACT</a>
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
-      <i class="fa fa-search"></i>
-    </a>
+  
   </div>
 
   <!-- Navbar on small screens -->
-  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
-
-
-
-
-
-    <a href="#about" class="w3-bar-item w3-button" onclick="toggleFunction()">ABOUT</a>
-    <a href="#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()">PORTFOLIO</a>
-    <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">CONTACT</a>
-    <a href="#" class="w3-bar-item w3-button">SEARCH</a>
-  </div>
+  
 </div>
 
 <!-- First Parallax Image with Logo Text -->
 <div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
   <div class="w3-display-middle" style="white-space:nowrap;">
-    <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">WHERE <span class="w3-hide-small">YOU FIND YOUR DREAM JOB</span>
+    <div class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">WHERE YOU FIND YOUR DREAM JOB</div>
+
+    <div class='wrapper text-center'>
+      <div class="btn-group">
+      <a href="{{route('employer.index')}}" class="btn btn-primary btn-lg">POST A JOB</a>
+      </div>
+    </div>
 
  </div>
 
-
-  
+ 
 </div>
 
 <!-- Container (About Section) -->
-<div class="w3-content w3-container w3-padding-64" id="about">
+<!-- <div class="w3-content w3-container w3-padding-64" id="about">
   <h2 class="w3-center">FIND THOUSANDS OF JOBS AND POST YOUR APPLICATION</h2>
   <p class="w3-center"><em>Employers find your perfect candidate here. Through our alogorithms 
   we bring you the best applicants.</em></p>
@@ -200,23 +194,18 @@ body, html {
 
 
 
-    <!-- Hide this text on small devices -->
+    <! Hide this text on small devices -->
     
-  </div>
+ <!--  </div>
   
-</div>
-
-<div class="w3-row w3-center w3-dark-grey w3-padding-16">
-
-
-</div>
+</div> --> 
 
 <!-- Second Parallax Image with Portfolio Text -->
-<div class="bgimg-2 w3-display-container w3-opacity-min">
+<!-- <div class="bgimg-2 w3-display-container w3-opacity-min">
   <div class="w3-display-middle">
      <h3><i>Fill out the application and land your dream job today!</i></h3>
   </div>
-</div>
+</div> -->
 
 
 <!-- Modal for full size images on click-->
@@ -242,6 +231,10 @@ placeholder="Search for jobs for example, 'pharmacist' or 'engineer' " title="Ty
 <br>
 
 <table id="myTable">
+
+<h2 class="bg-success" id="result">
+
+</h2>
 
  <tr class="header">
     <th style="width:20%;">Title</th>
@@ -270,6 +263,7 @@ placeholder="Search for jobs for example, 'pharmacist' or 'engineer' " title="Ty
 </table>
 
 <script>
+
 function myFunction() {
   var input, filter, table, tr, td, i;
   input = document.getElementById("myInput");

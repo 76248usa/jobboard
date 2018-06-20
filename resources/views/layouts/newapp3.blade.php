@@ -13,7 +13,6 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif;
 font-weight: lighter;} 
@@ -123,6 +122,8 @@ body, html {
   </div>
 </div>
 
+@yield('content')
+
 <!-- First Parallax Image with Logo Text -->
 <div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
   <div class="w3-display-middle" style="white-space:nowrap;">
@@ -157,7 +158,7 @@ body, html {
 
 <div class="w3-row w3-center w3-dark-grey w3-padding-16">
 
- @yield('content')
+ 
 
 </div>
 

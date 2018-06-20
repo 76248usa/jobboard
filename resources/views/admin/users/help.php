@@ -1,1 +1,0 @@
- <td><a href="{{route('users.edit', ['id' => $user->id]) }}">{{$user->name}}</a></td>

@@ -5,16 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-<link href="{{asset('css/app.css') }}" rel="stylesheet">
-
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+ 
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif;
-font-weight: lighter;}
+font-weight: lighter;
+font-size: 1.25em;
+;}
+
 h3{
   color: white;
 }
@@ -22,6 +28,11 @@ body, html {
     height: 100%;
     color: #777;
     line-height: 1.8;
+    
+}
+
+p {
+  font-size: 12px;
 }
 
 /* Create a Parallax Effect */
@@ -97,7 +108,7 @@ body, html {
 
 
 
-    <a href="{{route('teacher.index')}}" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-home"></i>HOME</a>
+    <a href="{{route('teacher.index')}}" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-home"></i> FIND A JOB</a>
 
     @if(Auth::check())
 
@@ -107,18 +118,22 @@ body, html {
       
     @endif
     
-    <a href="#contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> CONTACT</a>
+    <a href="#contact" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-envelope"></i> POST A JOB</a>
     <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red">
       <i class="fa fa-search"></i>
     </a>
   </div>
 
+
+
+
+
   <!-- Navbar on small screens -->
   <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
     <a href="#about" class="w3-bar-item w3-button" onclick="toggleFunction()">ABOUT</a>
     <a href="#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()">PORTFOLIO</a>
-    <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">CONTACT</a>
-    <a href="#" class="w3-bar-item w3-button">SEARCH</a>
+    <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">POST A JOB</a>
+    
   </div>
 </div>
 
@@ -137,17 +152,12 @@ body, html {
 <!-- Second Parallax Image with Portfolio Text -->
 <div class="bgimg-2 w3-display-container w3-opacity-min">
   <div class="w3-display-middle">
-     <h3><i></i></h3>
+     @yield('content3')
   </div>
 </div>
-
-
 <!-- Modal for full size images on click-->
 
-
-
 <!-- Third Parallax Image with Portfolio Text -->
-
 
 <!-- Container (Contact Section) -->
 
@@ -160,14 +170,11 @@ body, html {
 
   </div>
 
-  <p>Powered by AppsByElsabe</a></p>
-
-   
+  <p>Powered by AppsByElsabe</a></p>   
 </footer>
  
 <!-- Add Google Maps -->
 <script>
-
 
 // Modal Image Gallery
 function onClick(element) {
@@ -198,8 +205,6 @@ function toggleFunction() {
     }
 }
 </script>
-
-
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
 <!--

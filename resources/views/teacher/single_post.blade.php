@@ -1,5 +1,11 @@
 @extends('layouts.newapp2')
 
+
+
+<script type="text/javascript">
+alert("Are you signed in?");
+</script>
+
 @section('content')
 
 <style>
@@ -13,6 +19,13 @@
   font-weight: lighter;
 }
 
+p {
+  font-size: 14px;
+}
+
+#application {
+  font-size: .8em;
+}
 
 
 input {
@@ -20,7 +33,7 @@ input {
 }
 
 #rules {
-  font-size: 1.5rem;
+  font-size: .8em;
 }
 
 </style>
@@ -91,10 +104,13 @@ function myFunction() {
         <br>
         <h4>FILL OUT APPLICATION BELOW</h4>
 
+
 </style>
 @endsection   
 
 @section('content2')
+
+<div id="application">
 
 <h2 style="text-align: center";>Create Application</h2>
 <br>
@@ -160,22 +176,19 @@ Submit Application.</button>
 
 </div>
 
+</div>
+
 {!! Form::close() !!} 
+
 
  
 @include('includes.error')
 
-@endsection
-
-@section('scripts')
-
-<script type="text/javascript">
-alert("Are you signed in?");
-</script>
 
 @endsection
 
-</div>
+
+
 
 
 

@@ -3,14 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth;
-use App\Category;
-use App\Post;
-use App\Application;
-use App\User;
-use Alert;
+use App\Http\Requests\EmployersRequest;
+use App\Employer;
 
-class TeachersController extends Controller
+class EmployersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,20 +15,7 @@ class TeachersController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        response()->json($user);
-
-        $categories = Category::all();
-        response()->json($categories);
-        
-        $posts = Post::all();
-        response()->json($posts);
-
-        //$search = $_POST('search');
-
-        //echo $search;
-
-        return view('teacher', compact('categories', 'posts', 'user'));
+        return view('employer');
     }
 
     /**
@@ -42,8 +25,6 @@ class TeachersController extends Controller
      */
     public function create()
     {
-        return view('teacher.single_post'); 
-
         
     }
 
@@ -53,32 +34,24 @@ class TeachersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ApplicationRequest $request)
+    public function store(EmployersRequest $request)
     {
+        $employer = new Employer;
+        $employer->name = $request->input('name');
+        $employer->email = $request->input('email');
+        $employer->phone = $request->input('phone');
+        $employer->body = $request->input('body');
+        $employer->careerpage = $request->input('careerpage');
 
-        $user = Auth::user();
-        response()->json($users);
+        if($employer->careerpage == 'yes'){
 
-        $input = $request->all();
+            $employer->careerpage = 1;
+            
+        }
+        
+        $employer->save(); 
 
-        $photo = $request->input('photo_id');
-
-         if($file = $request->file('photo_id')){
-
-          $name = time(). $file->getClientOriginalName();
-
-          $file->move('images', $name);
-
-          $photo = Photo::create(['file'=>$name]);
-
-          $input['photo_id'] = $photo->id;
-        } 
-
-        $user->application()->create($input); 
-
-        return view('teacher.thankyou');
-
-         
+        return response()->json($employer);
     }
 
     /**
@@ -89,12 +62,7 @@ class TeachersController extends Controller
      */
     public function show($id)
     {
-        $application = Application::findOrFail($id);
-        response()->json($application);
-
-        $photo = $application->photo;
-        
-        return view('teacher.application.show', compact('application', 'photo'));
+        //
     }
 
     /**
@@ -117,8 +85,7 @@ class TeachersController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-
+        //
     }
 
     /**
@@ -131,6 +98,4 @@ class TeachersController extends Controller
     {
         //
     }
-
-
 }

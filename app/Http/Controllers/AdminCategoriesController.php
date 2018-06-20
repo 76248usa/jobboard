@@ -20,12 +20,18 @@ class AdminCategoriesController extends Controller
     public function index()
     {
         $categories = Category::all();
+        response()->json($categories);
         $user = Auth::user();
+        response()->json($user);
 
         $count_users = User::count();
+        response()->json($count_users);
         $count_applications = Application::count();
+        response()->json($count_applications);
         $count_cat = Category::count();
+        response()->json($count_cat);
         $count_posts = Post::count();
+        response()->json($count_posts);
 
         return view('admin.categories.index', compact('categories','user','count_users','count_cat','count_applications','count_posts'));
     
@@ -45,7 +51,13 @@ class AdminCategoriesController extends Controller
 
         $input = $request->all();
 
-        Category::create($input);
+        // $category = new Category;
+        // $category->name = $request->input('name');
+        // $category->save();
+
+        // response()->json($category);
+
+        $category = Category::create($input);
 
         return redirect('/admin/categories');
     }
@@ -70,13 +82,19 @@ class AdminCategoriesController extends Controller
     public function edit($id)
     {
         $category = Category::findOrFail($id);
+        response()->json($category);
 
         $user = Auth::user();
+        response()->json($user);
 
         $count_users = User::count();
+        response()->json($count_users);
         $count_applications = Application::count();
+        response()->json($count_applications);
         $count_cat = Category::count();
+        response()->json($count_cat);
         $count_posts = Post::count();
+        response()->json($count_posts);
 
         return view('admin.categories.edit', compact('category','user', 'count_users','count_cat','count_applications','count_posts'));
     }
@@ -93,6 +111,7 @@ class AdminCategoriesController extends Controller
         $input = $request->all();
 
         $category = Category::findOrFail($id);
+        response()->json($category);
 
         $category->update($input);
 
@@ -108,6 +127,7 @@ class AdminCategoriesController extends Controller
     public function destroy($id)
     {
         $category = Category::findOrFail($id);
+        response()->json($category);
 
         $category->delete();
 

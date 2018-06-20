@@ -9,9 +9,11 @@
     <tr>
       <th scope="col">Id</th>
       <th scope="col">Owner</th>
-      <th scope="col">Title</th>
+      <th scope="col">Email</th>
+      <th scope="col">Address</th>
       <th scope="col">Body</th>
-       <th scope="col">File</th>
+      <th scope="col">File</th>
+       
       <th scope="col">Created</th>
       
     </tr>
@@ -24,9 +26,10 @@
       <th scope="row">{{$application->id}}</th>
       
       <td><a href="{{route('teacher.show', $application->id)}}">{{$application->applicant}}</a></td>
-      <td>{{($application->post_id)}}</td>
+      <td>{{($application->email)}}</td>
+      <td>{{($application->address)}}</td>
       <td>{{strip_tags(str_limit($application->body,30))}}</td>
-      <td>{{($application->post_id)}}</td>
+     
       <td>
 
       @if($application->photo)

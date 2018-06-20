@@ -55,7 +55,7 @@
 </div>
 
 <script type="text/javascript">
-alert("Welcome, please fill out the form");
+// alert("Welcome, please fill out the form");
 </script>
 
 @endsection

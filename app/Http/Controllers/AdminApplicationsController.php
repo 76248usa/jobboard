@@ -23,15 +23,22 @@ class AdminApplicationsController extends Controller
     public function index()
     {
         $user = Auth::user();
+        response()->json($user);
 
         $photos = Photo::all();
+        response()->json($photos);
 
         $applications = Application::all();
+        response()->json($applications);
 
         $count_users = User::count();
+        response()->json($count_users);
         $count_applications = Application::count();
+        response()->json($count_applications);
         $count_cat = Category::count();
+        response()->json($count_cat);
         $count_posts = Post::count();
+        response()->json($count_posts);
 
         return view('admin.applications.index', compact('applications', 'photos', 'user', 'count_users','count_cat','count_applications','count_posts'));
 
@@ -58,6 +65,7 @@ class AdminApplicationsController extends Controller
     {
        
         $user = Auth::user();
+        response()->json($user);
 
         $input = $request->all();
 
@@ -93,16 +101,23 @@ class AdminApplicationsController extends Controller
     public function show($id)
     {
         $post = Post::findOrFail($id);
+        response()->json($post);
 
         $applications = $post->applications;
+        response()->json($applications);
 
         $user = Auth::user();
-        
-        $count_users = User::count();
-        $count_applications = Application::count();
-        $count_cat = Category::count();
-        $count_posts = Post::count();
+        response()->json($user);
 
+        $count_users = User::count();
+        response()->json($count_users);
+        $count_applications = Application::count();
+        response()->json($count_applications);
+        $count_cat = Category::count();
+        response()->json($count_cat);
+        $count_posts = Post::count();
+        response()->json($count_posts);
+ 
         return view('admin.applications.show', compact('applications','user','post', 'count_users','count_cat','count_applications','count_posts'));
 
     }

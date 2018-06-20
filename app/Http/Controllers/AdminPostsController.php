@@ -23,11 +23,18 @@ class AdminPostsController extends Controller
     {
 
       $user = Auth::user();
+      response()->json($user);
+
       $posts = Post::all();
+      response()->json($posts);
       $count_users = User::count();
+      response()->json($count_users);
       $count_applications = Application::count();
+      response()->json($count_applications);
       $count_cat = Category::count();
+      response()->json($count_cat);
       $count_posts = Post::count();
+      response()->json($count_posts);
 
       return view('admin.posts.index', compact('posts', 'user','count_users','count_cat','count_applications','count_posts'));
     }
@@ -42,11 +49,16 @@ class AdminPostsController extends Controller
 
       $categories = Category::pluck('name', 'id')->all();
       $user = Auth::user();
-
+      response()->json($user);
       $count_users = User::count();
+      response()->json($count_users);
+
       $count_applications = Application::count();
+      response()->json($count_applications);
       $count_cat = Category::count();
+      response()->json($count_cat);
       $count_posts = Post::count();
+      response()->json($count_posts);
 
         return view('admin.posts.create', compact('categories', 'user','count_users','count_cat','count_applications','count_posts'));
     }
@@ -60,10 +72,23 @@ class AdminPostsController extends Controller
     public function store(PostsCreateRequest $request)
     {
         $user = Auth::user();
+        response()->json($user);
 
-        $input = $request->all();
+        //$input = $request->all();
 
-        $user->posts()->create($input);
+        
+        $post = new Post;
+        $post->title = $request->input('title');
+        $post->date_start = $request->input('date_start');
+        $post->location = $request->input('location');
+        $post->body = $request->input('body');
+
+
+        $post->save();
+
+        response()->json($post);
+ 
+        //$user->posts()->create($input);
 
         return redirect('/admin/posts');
        
@@ -85,6 +110,7 @@ class AdminPostsController extends Controller
     public function post($id){
 
     $post = Post::findOrFail($id);
+    response()->json($post);
 
         return view('teacher.single_post', compact('post'));
 
@@ -99,14 +125,21 @@ class AdminPostsController extends Controller
     public function edit($id)
     {
         $user = Auth::user();
+        response()->json($user);
         $post = Post::findOrFail($id);
+        response()->json($post);
 
         $categories = Category::pluck('name', 'id')->all();
 
         $count_users = User::count();
+        response()->json($count_users);
       $count_applications = Application::count();
+      response()->json($count_applications);
       $count_cat = Category::count();
+      response()->json($count_cat);
       $count_posts = Post::count();
+      response()->json($count_posts);
+
 
         return view('admin.posts.edit', compact('post', 'categories', 'user', 'count_users','count_cat','count_applications','count_posts'));
 
@@ -137,7 +170,7 @@ class AdminPostsController extends Controller
     public function destroy($id)
     {
         $post = Post::findOrFail($id);
-
+        response()->json($post);
         $post->delete();
 
         return redirect('admin/posts');

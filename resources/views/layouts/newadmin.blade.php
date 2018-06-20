@@ -33,17 +33,6 @@ font-weight: lighter;}
     <div class="w3-col s4">
 
       
-    
-        @if($user->photo)
-  <!-- <img src="{{$user->photo->file}}" alt="" height="150" class="img-responsive"> -->
-  <img width="50" src="http://localhost:8888/jobboard/public/images/{{($user->photo->file)}}" class="w3-circle">
-        
-
-        @else
-  <img src="{{'http://placehold.it/'}}" alt="" width="46" class="img-responsive">
-  
-        @endif
-   
                             <!-- <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li> -->
    
@@ -75,7 +64,17 @@ font-weight: lighter;}
     <a href="{{route('posts.index')}}" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  All Posts</a>
     <a href="{{route('posts.create')}}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Create Post</a>
     
+
+    @if($user->name == 'Elzie Crous')
+
+
+
+    <a href="{{route('users.index')}}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  All Users</a>
+    
     <a href="{{route('users.create')}}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Create User</a>
+
+    @endif
+
     <a href="{{route('categories.index')}}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Categories</a>
     <a href="{{route('applications.index')}}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>  Applications</a>
     <a href="{{route('download')}}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  Download Resume</a>
